@@ -27,7 +27,8 @@ localectl set-keymap uk-umlaut
 - Copy `gb_uml` to `~/.xkb/symbols/`
 - Get current configuration `setxkbmap -print > ~/.xkb/gb_uml.xkb`
 - Edit `gb_uml.xkb` and add `gb_uml` to `xkb_symbols`
-   ```
+
+```
 	xkb_keymap {
    	xkb_keycodes  { include "evdev+aliases(qwerty)"	};
    	xkb_types     { include "complete"	};
@@ -35,13 +36,14 @@ localectl set-keymap uk-umlaut
    	xkb_symbols   { include "pc+gb_uml+gb:2+at(nodeadkeys):3+us:4+inet(evdev)"	};
    	xkb_geometry  { include "pc(pc105)"	};
    };
-   ```
+```
 - Load configuration `xkbcomp -I$HOME/.xkb $HOME/.xkb/gb_uml.xkb $DISPLAY`
 
 ### System
 - Copy `gb_uml` to `\usr\share\X11\xkb\symbols`
 - Add layout to `base.xml` and `evdev.xml` (`\usr\share\X11\xkb\rules\`)
-	```xml
+
+```xml
     <layout>
       <configItem>
         <name>gb_uml</name>
@@ -52,7 +54,7 @@ localectl set-keymap uk-umlaut
         </languageList>
      </configItem>
     </layout>
-   ```
+```
 
 ## Copyright
 [License](/LICENSE.md).
