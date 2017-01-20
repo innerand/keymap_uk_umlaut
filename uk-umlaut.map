@@ -1,0 +1,24 @@
+# uk-umlaut.map
+# from innerand@nxa.at (c) 2017 (MIT Licence)
+#
+# German Umlauts with AltGr
+
+# Include the default uk keymap
+include "uk.map.gz"
+
+#(0 = plain, 2 = AltGr, 3 = Shift + AltGr)
+keymaps 0,2,3
+
+# CAPS to Esc
+plain keycode 58 = Escape
+altgr keycode 58 = Caps_Lock
+#"u"
+altgr keycode  22 = udiaeresis
+shift altgr keycode 22 = Udiaeresis
+#"o"
+altgr keycode  24 = odiaeresis
+shift altgr keycode  24 = Odiaeresis
+#"a"
+altgr keycode  30 = adiaeresis
+shift altgr keycode 30 = Adiaeresis
+

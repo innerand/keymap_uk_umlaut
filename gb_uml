@@ -1,0 +1,23 @@
+// German Umlauts with AltGr
+// innerand@nxa.at (c) 2017 (MIT Licence)
+
+default  partial alphanumeric_keys
+xkb_symbols "gb_uml" {
+    include "gb(basic)"
+    name[Group1]= "English (UK, Umlauts)";
+
+    // Vim-Users
+    // Map Esc to Caps, Caps lock AltGr + Caps
+    key <CAPS> {
+       type[Group1] = "FOUR_LEVEL",
+       symbols[Group1] = [        Escape,        Escape,           Caps_Lock,           Caps_Lock ],
+       actions[Group1] = [    NoAction(),    NoAction(),   LockMods(modifiers=lock), LockMods(modifiers=lock)]
+    };
+
+    // Umlauts with AltGr
+    key <AC01> { [             a,             A,          adiaeresis,          Adiaeresis ] };
+    key <AD07> { [             u,             U,          udiaeresis,          Udiaeresis ] };
+    key <AD09> { [             o,             O,          odiaeresis,          Odiaeresis ] };
+
+    include "level3(ralt_switch)"
+};
