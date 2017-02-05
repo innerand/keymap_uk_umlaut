@@ -58,11 +58,11 @@ localectl set-keymap uk-umlaut
 
 ### Packages
 #### ArchLinux
-There is a PKGBUILD at 'packages/arch/' to replace the 'xkeyboard-config' package.
-- Edit PKBUILD and update 'pkgver' (as tagged at the git repository) if
+There is a PKGBUILD at `packages/arch/` to replace the `xkeyboard-config` package.
+- Edit `PKGBUILD` and update `pkgver` (as tagged at the upstream git repository) if
   necessary
-- Run makepkg
-- install
+- Run `makepkg`
+- Install
 
 ## Copyright
 [See LICENSE.md](/LICENSE.md).
