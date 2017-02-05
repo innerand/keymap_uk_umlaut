@@ -48,7 +48,7 @@ localectl set-keymap uk-umlaut
       <configItem>
         <name>gb_uml</name>
         <shortDescription>en</shortDescription>
-        <description>English (UK,Umlauts)</description>
+        <description>English (UK, Umlauts)</description>
         <languageList>
           <iso639Id>eng</iso639Id>
         </languageList>
@@ -56,7 +56,15 @@ localectl set-keymap uk-umlaut
     </layout>
 ```
 
+### Packages
+#### ArchLinux
+There is a PKGBUILD at 'packages/arch/' to replace the 'xkeyboard-config' package.
+- Edit PKBUILD and update 'pkgver' (as tagged at the git repository) if
+  necessary
+- Run makepkg
+- install
+
 ## Copyright
-[License](/LICENSE.md).
+[See LICENSE.md](/LICENSE.md).
 
 
