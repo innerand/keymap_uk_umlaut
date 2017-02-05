@@ -40,8 +40,8 @@ localectl set-keymap uk-umlaut
 - Load configuration `xkbcomp -I$HOME/.xkb $HOME/.xkb/gb_uml.xkb $DISPLAY`
 
 ### System
-- Copy `gb_uml` to `\usr\share\X11\xkb\symbols`
-- Add layout to `base.xml` and `evdev.xml` (`\usr\share\X11\xkb\rules\`)
+- Copy `gb_uml` to `/usr/share/X11/xkb/symbols`
+- Add layout to `base.xml` and `evdev.xml` (`/usr/share/X11/xkb/rules/`)
 
 ```xml
     <layout>
