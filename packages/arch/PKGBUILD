@@ -1,42 +1,44 @@
 #Maintainer: Andreas Innerlohninger <innerand at nxa dot at>
 pkgname=xkeyboard-config-umlauts
-pkgver=2.21
+pkgver=2.37
 pkgrel=1
 pkgdesc="X keyboard configuration files, gb layout with umlauts"
 arch=(any)
 license=('custom')
 url="https://www.freedesktop.org/wiki/Software/XKeyboardConfig"
-makedepends=('intltool' 'xorg-xkbcomp' 'libxslt')
+makedepends=('xorg-xkbcomp' 'libxslt' 'python' 'meson' 'git')
 provides=('xkbdata' 'xkeyboard-config')
 replaces=('xkbdata' 'xkeyboard-config')
 conflicts=('xkbdata' 'xkeyboard-config')
-source=(https://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-${pkgver}.tar.bz2{,.sig} 'xkeyboard-config.patch' )
-validpgpkeys=('FFB4CCD275AAA422F5F9808E0661D98FC933A145')
-validpgpkeys+=('15CFA5C595041D2CCBEA155F1732AA424A0E86B4') # "Sergey Udaltsov (For GNOME-related tasks) <svu@gnome.org>"
-sha256sums=('30c17049fae129fc14875656da9aa3099e3031d6ce0ee1d77aae190fd9edcec5'
-            'SKIP' '38bdebeb8fefd06dc5eb010c19fd337a56f4c4ce7c9e771630f1d138c1df0d2e')
+# https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config
+source=(https://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-${pkgver}.tar.xz{,.sig})
+validpgpkeys=('FFB4CCD275AAA422F5F9808E0661D98FC933A145') # Sergey Udaltsov <sergey.udaltsov@gmail.com>
+sha256sums=('eb1383a5ac4b6210d7c7302b9d6fab052abdf51c5d2c9b55f1f779997ba68c6c'
+            'SKIP')
 
 prepare() {
   cd xkeyboard-config-${pkgver}
-  patch -p1 -i ../xkeyboard-config.patch
+  patch -p1 -i ../../uk_umlaut.patch
 }
 
 build() {
-  cd xkeyboard-config-${pkgver}
-  ./configure --prefix=/usr \
-      --with-xkb-base=/usr/share/X11/xkb \
-      --with-xkb-rules-symlink=xorg \
-      --enable-compat-rules=yes
-  make
- }
+  arch-meson xkeyboard-config-${pkgver} build \
+	-D xkb-base="/usr/share/X11/xkb" \
+	-D compat-rules=true \
+	-D xorg-rules-symlinks=true
 
- package() {
-  cd xkeyboard-config-${pkgver}
+  # Print config
+  meson configure build
 
-  make DESTDIR="${pkgdir}" install
-  rm -f "${pkgdir}/usr/share/X11/xkb/compiled"
+  ninja -C build
+
+}
+
+package() {
+
+  DESTDIR="$pkgdir" ninja -C build install
 
   install -m755 -d "${pkgdir}/var/lib/xkb"
   install -m755 -d "${pkgdir}/usr/share/licenses/xkeyboard-config"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/xkeyboard-config/"
+  install -m644 xkeyboard-config-${pkgver}/COPYING "${pkgdir}/usr/share/licenses/xkeyboard-config"
 }

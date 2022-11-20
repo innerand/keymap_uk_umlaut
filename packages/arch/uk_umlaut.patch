@@ -1,23 +1,25 @@
-diff -aurw package.pristine/rules/base.xml.in package.new/rules/base.xml.in
---- package.pristine/rules/base.xml.in	2017-02-01 02:39:10.000000000 +0100
-+++ package.new/rules/base.xml.in	2017-02-05 13:09:29.345272778 +0100
-@@ -5012,6 +5012,12 @@
-             <_description>English (UK, Colemak)</_description>
+diff --git a/rules/base.xml b/rules/base.xml
+index eff2f941..fcddb307 100644
+--- a/rules/base.xml
++++ b/rules/base.xml
+@@ -6073,6 +6073,12 @@
+             <description>English (UK, Colemak)</description>
            </configItem>
          </variant>
 +        <variant>
 +          <configItem>
 +            <name>gb_umlauts</name>
-+            <_description>English (UK, with Umlauts)</_description>
++            <description>English (UK, with Umlauts)</description>
 +          </configItem>
 +        </variant>
-       </variantList>
-     </layout>
-     <layout>
-diff -aurw package.pristine/symbols/gb package.new/symbols/gb
---- package.pristine/symbols/gb	2017-02-01 02:39:10.000000000 +0100
-+++ package.new/symbols/gb	2017-02-05 13:05:24.084466413 +0100
-@@ -203,3 +203,18 @@
+         <variant>
+           <configItem>
+             <name>colemak_dh</name>
+diff --git a/symbols/gb b/symbols/gb
+index 3aab5c86..4683b77c 100644
+--- a/symbols/gb
++++ b/symbols/gb
+@@ -251,3 +251,18 @@ partial alphanumeric_keys
  	xkb_symbols "sun_type6" {
  	include "sun_vndr/gb(sun_type6)"
  };
